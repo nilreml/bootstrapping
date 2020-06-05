@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-su -
-echo test
+su -c "echo test;
+echo test2
+"
