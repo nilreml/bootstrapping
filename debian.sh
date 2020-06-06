@@ -17,19 +17,16 @@ APT_SOURCES_STRING_2="deb-src ${APT_SOURCES_STRING}"
 su -c "echo '${SUDOERS_STRING}'>'${SUDOERS_PATH}/${SUDOERS_FILE}'"
 
 COMMANDS=(
-  echo test1
-  echo test2
-  echo test3 test3b test3c
-#  usermod -aG sudoers ${USERNAME}
-#  echo ${APT_SOURCES_STRING_1}>${APT_SOURCES_PATH}/${APT_SOURCES_FILE}
-#  echo ${APT_SOURCES_STRING_2}>${APT_SOURCES_PATH}/${APT_SOURCES_FILE}
-#  apt autoclean
-#  apt update
-#  apt dist-upgrade -y
-#  apt autoremove --purge -y
-#  apt install vim git
+  "usermod -aG sudo ${USERNAME}"
+  echo ${APT_SOURCES_STRING_1}>${APT_SOURCES_PATH}/${APT_SOURCES_FILE}
+  echo ${APT_SOURCES_STRING_2}>${APT_SOURCES_PATH}/${APT_SOURCES_FILE}
+  apt autoclean
+  apt update
+  apt dist-upgrade -y
+  apt autoremove --purge -y
+  apt install vim git
 )
 
-for COMMAND in ${COMMANDS[@]}; do
+for COMMAND in "${COMMANDS[@]}"; do
   sudo ${COMMAND}
 done
